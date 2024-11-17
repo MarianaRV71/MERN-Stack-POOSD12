@@ -23,6 +23,11 @@ const ConstellationSchema = new Schema({
         type: String,
         required: true,
         trim: true
+      },
+      BirthMonth: {
+        type: String,
+        required: true,
+        trim: true
       }
 })
 
