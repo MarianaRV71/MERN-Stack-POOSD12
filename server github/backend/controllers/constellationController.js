@@ -40,6 +40,12 @@ const loginUser = async (req, res) => {
     }
 }
 
+//seach constellation 
+
+//const getConstellations = async (req, res) => {
+
+
+
 //get all constellations
 const getConstellations = async (req, res) => {
     const constellations = await Constellation.find({}).sort({createdAt: -1})
