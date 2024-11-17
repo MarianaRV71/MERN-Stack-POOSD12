@@ -40,6 +40,34 @@ const loginUser = async (req, res) => {
     }
 }
 
+//search constellation
+
+/*const searchConstellations = async (req, res) => {
+
+    const {search} = req.query;
+
+    if (!search) {
+        return res.status(400).json({ error: 'Data is required for searching implication.' });
+    }
+    
+    try {
+        const constellations = await Constellation.find({
+            $or: [
+                { name: { $regex: Search, $options: 'i' } },
+                { description: { $regex: Search, $options: 'i' } }
+            ]
+        });
+
+        if (constellations.length === 0) {
+            return res.status(404).json({ message: 'No constellation was found.' });
+        }
+
+        res.status(200).json(constellations);
+    } catch (error) {
+        res.status(500).json({ error: 'Searching a constellation has failed.', details: error.message });
+    }
+};*/
+
 //get all constellations
 const getConstellations = async (req, res) => {
     const constellations = await Constellation.find({}).sort({createdAt: -1})
@@ -143,6 +171,7 @@ const getUserFavorites = async (req, res) => {
 module.exports = {
     loginUser,
     getConstellations,
+    //searchConstellations,
     getConstellation,
     favoriteConstellation,
     unfavoriteConstellation,
