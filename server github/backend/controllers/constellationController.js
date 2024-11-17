@@ -47,6 +47,10 @@ const loginUser = async (req, res) => {
 //get all constellations
 const getConstellations = async (req, res) => {
     const constellations = await Constellation.find({}).sort({createdAt: -1})
+
+    if (!constellations) {
+            return res.status(404).json({ message: 'No constellations found' });
+        }
     res.status(200).json(constellations) //sends all the constellations back to the client 
 }
 
@@ -63,7 +67,9 @@ const getConstellation = async (req, res) => {
     if( !constellation) {
         return res.status(404).json({error: 'No such constellation'})
     }
+    
     res.status(200).json(constellation) //sends the one constellations back to the client 
+    
 }
 
 //post a favorite constellation
